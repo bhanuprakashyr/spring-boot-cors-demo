@@ -1,8 +1,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <body>
     <div align="center">
-      <h1>Hello Simple website to Simulate CORS</h1>
-      <p> Your console reports CORS Error if this hosted from a different domain</p>
+      <h1>This Website is hosted on the domain localhost:8080 and trying to update resource available on its on domain localhost:8080 </h1>
+      <h2> By making a call POST /books endpoint </h2>
+      <p> Your browser console should not report and CORS error, doesn't matter whether you have enabled or disabled cors setting while starting app</p>
     </div>
   </body>
 <script>
@@ -19,24 +20,20 @@ function makePostRequest(url, data, username, password, callback) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       if (xhr.status == 200 || xhr.status == 201) {
-        // Successful response
         var response = JSON.parse(xhr.responseText);
         callback(null, response);
       } else {
-        // Error response
         callback(xhr.status);
       }
     }
   };
 
-  // Convert data to JSON string
   var jsonData = JSON.stringify(data);
 
-  // Send the request
   xhr.send(jsonData);
 }
 
-// Example usage:
+
 var apiUrl = "http://localhost:8080/books";
 var postData = [
     "Clean Code",
