@@ -1,0 +1,58 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div align="center">
+      <h1>Hello Simple website to Simulate CORS</h1>
+      <p> Your console reports CORS Error if this hosted from a different domain</p>
+    </div>
+  </body>
+<script>
+
+function makePostRequest(url, data, username, password, callback) {
+  var xhr = new XMLHttpRequest();
+  var credentials = username + ":" + password;
+  var base64Credentials = btoa(credentials);
+
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Authorization", "Basic " + base64Credentials);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200 || xhr.status == 201) {
+        // Successful response
+        var response = JSON.parse(xhr.responseText);
+        callback(null, response);
+      } else {
+        // Error response
+        callback(xhr.status);
+      }
+    }
+  };
+
+  // Convert data to JSON string
+  var jsonData = JSON.stringify(data);
+
+  // Send the request
+  xhr.send(jsonData);
+}
+
+// Example usage:
+var apiUrl = "http://localhost:8080/books";
+var postData = [
+    "Clean Code",
+    "Pragmatic programmer",
+    "Accelerate"
+];
+var username = "user";
+var password = "password";
+
+makePostRequest(apiUrl, postData, username, password, function (error, response) {
+  if (error) {
+    console.error("Error:", error);
+  } else {
+    console.log("Response:", response);
+  }
+});
+
+</script>
+</html>
