@@ -37,7 +37,7 @@ CORS can be easily understood by using this example
 6. Open the browser debug console and you will observe cors errors
 7. Stop the spring boot java process
 
-## Cors issues is observed, if we try to accept resource hosted on different domain 
+## Cors issues is observed, if we try to access resource hosted on different domain 
 
 ![image](https://github.com/bhanuprakashyr/spring-boot-cors-demo/assets/7588597/99efc4fd-2f30-40c4-816a-724316ba31ec)
 
