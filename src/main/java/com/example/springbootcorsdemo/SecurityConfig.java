@@ -41,6 +41,9 @@ public class SecurityConfig {
     @Value("#{new Boolean('${website.allow.cors}')}")
     private Boolean allowCors;
 
+    @Value("#{new Long('${website.allow.cors.inSeconds}')}")
+    private Long allowTillInSeconds;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -67,6 +70,7 @@ public class SecurityConfig {
             configuration.setAllowedOrigins(allowedOrigins);
             configuration.setAllowedMethods(allowedMethods);
             configuration.setAllowedHeaders(allowedHeaders);
+            configuration.setMaxAge(allowTillInSeconds);
             UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
             source.registerCorsConfiguration(allowedUrlPatters, configuration);
             return source;
