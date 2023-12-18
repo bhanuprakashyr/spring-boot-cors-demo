@@ -37,9 +37,10 @@ CORS can be easily understood by using this example
 6. Open the browser debug console and you will observe cors errors
 7. Stop the spring boot java process
 
-## Cors issues is observed, if we try to accept resource hosted on different domain 
+## Cors issues is observed, if we try to access resource hosted on different domain 
 
-![Image showing cors issue on browser console](https://github.com/bhanuprakashyr/spring-boot-cors-demo/images/Image_showing_cors_error.jpg)
+![image](https://github.com/bhanuprakashyr/spring-boot-cors-demo/assets/7588597/99efc4fd-2f30-40c4-816a-724316ba31ec)
+
 
 ## 3. Update resource hosted from the different domain with settings to allow requests for domain 9090 (website.allow.cors=true)
 1. java -jar .\target\spring-boot-cors-demo-0.0.1-SNAPSHOT.jar --website.allow.cors=true
